@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StudentController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">student-services</a> &gt; <a href="index.source.html" class="el_package">com.in28minutes.springboot.controller</a> &gt; <span class="el_source">StudentController.java</span></div><h1>StudentController.java</h1><pre class="source lang-java linenums">package com.in28minutes.springboot.controller;
+
+import java.net.URI;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import com.in28minutes.springboot.model.Course;
+import com.in28minutes.springboot.service.StudentService;
+
+@RestController
+<span class="fc" id="L19">public class StudentController {</span>
+
+	@Autowired
+	private StudentService studentService;
+
+	@GetMapping(&quot;/students/{studentId}/courses&quot;)
+	public List&lt;Course&gt; retrieveCoursesForStudent(@PathVariable String studentId) {
+<span class="nc" id="L26">		return studentService.retrieveCourses(studentId);</span>
+	}
+
+	@PostMapping(&quot;/students/{studentId}/courses&quot;)
+	public ResponseEntity&lt;Void&gt; registerStudentForCourse(
+			@PathVariable String studentId, @RequestBody Course newCourse) {
+
+<span class="fc" id="L33">		Course course = studentService.addCourse(studentId, newCourse);</span>
+
+<span class="pc bpc" id="L35" title="1 of 2 branches missed.">		if (course == null)</span>
+<span class="nc" id="L36">			return ResponseEntity.noContent().build();</span>
+
+<span class="fc" id="L38">		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path(</span>
+<span class="fc" id="L39">				&quot;/{id}&quot;).buildAndExpand(course.getId()).toUri();</span>
+
+<span class="fc" id="L41">		return ResponseEntity.created(location).build();</span>
+	}
+
+	@GetMapping(&quot;/students/{studentId}/courses/{courseId}&quot;)
+	public Course retrieveDetailsForCourse(@PathVariable String studentId,
+			@PathVariable String courseId) {
+<span class="fc" id="L47">		return studentService.retrieveCourse(studentId, courseId);</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

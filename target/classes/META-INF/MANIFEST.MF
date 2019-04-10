@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: phone-directory
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Abhishek
+Implementation-Vendor-Id: com.org.pd
+Build-Jdk: 1.8.0_111
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/phone-directory
+Created-By: Maven Integration for Eclipse
+

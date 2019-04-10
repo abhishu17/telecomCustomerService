@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.telecom.TelecomControllerIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.254 s - in com.telecom.TelecomControllerIntegrationTest

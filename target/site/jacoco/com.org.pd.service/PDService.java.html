@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PDService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">phone-directory</a> &gt; <a href="index.source.html" class="el_package">com.org.pd.service</a> &gt; <span class="el_source">PDService.java</span></div><h1>PDService.java</h1><pre class="source lang-java linenums">package com.org.pd.service;
+
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
+import com.org.pd.model.PhoneNumber;
+import com.org.pd.controller.MainController;
+import com.org.pd.model.Customer;
+
+@Component
+<span class="fc" id="L18">public class PDService {</span>
+
+<span class="fc" id="L20">	Logger logger = LoggerFactory.getLogger(MainController.class);</span>
+	
+<span class="fc" id="L22">	private static List&lt;Customer&gt; customers = new ArrayList&lt;&gt;();</span>
+	
+<span class="fc" id="L24">	private static List&lt;PhoneNumber&gt; phoneNumbers = new ArrayList&lt;&gt;();</span>
+
+	static {
+		//Initialize Data
+<span class="fc" id="L28">		PhoneNumber phone1 = new PhoneNumber(1, &quot;0468314861&quot;, false);</span>
+<span class="fc" id="L29">		PhoneNumber phone2 = new PhoneNumber(1, &quot;0468314862&quot;, false);</span>
+<span class="fc" id="L30">		PhoneNumber phone3 = new PhoneNumber(1, &quot;0468314863&quot;, false);</span>
+<span class="fc" id="L31">		PhoneNumber phone4 = new PhoneNumber(2, &quot;0468314864&quot;, false);</span>
+<span class="fc" id="L32">		PhoneNumber phone5 = new PhoneNumber(2, &quot;0468314865&quot;, false);</span>
+<span class="fc" id="L33">		PhoneNumber phone6 = new PhoneNumber(3, &quot;0468314866&quot;, false);</span>
+<span class="fc" id="L34">		PhoneNumber phone7 = new PhoneNumber(3, &quot;0468314867&quot;, false);</span>
+<span class="fc" id="L35">		PhoneNumber phone8 = new PhoneNumber(3, &quot;0468314868&quot;, false);</span>
+
+<span class="fc" id="L37">		phoneNumbers.add(phone1);</span>
+<span class="fc" id="L38">		phoneNumbers.add(phone2);</span>
+<span class="fc" id="L39">		phoneNumbers.add(phone3);</span>
+<span class="fc" id="L40">		phoneNumbers.add(phone4);</span>
+<span class="fc" id="L41">		phoneNumbers.add(phone5);</span>
+<span class="fc" id="L42">		phoneNumbers.add(phone6);</span>
+<span class="fc" id="L43">		phoneNumbers.add(phone7);</span>
+<span class="fc" id="L44">		phoneNumbers.add(phone8);</span>
+		
+		
+<span class="fc" id="L47">		Customer john = new Customer(1, &quot;John&quot;,new ArrayList&lt;&gt;(Arrays</span>
+<span class="fc" id="L48">						.asList(phone1, phone2, phone3)));</span>
+
+<span class="fc" id="L50">		Customer jack = new Customer(2, &quot;Jack&quot;,new ArrayList&lt;&gt;(Arrays</span>
+<span class="fc" id="L51">				.asList(phone4, phone5)));</span>
+		
+<span class="fc" id="L53">		Customer paul = new Customer(3, &quot;Paul&quot;,new ArrayList&lt;&gt;(Arrays</span>
+<span class="fc" id="L54">				.asList(phone6, phone7, phone8)));</span>
+
+<span class="fc" id="L56">		customers.add(john);</span>
+<span class="fc" id="L57">		customers.add(jack);</span>
+<span class="fc" id="L58">		customers.add(paul);</span>
+		
+<span class="fc" id="L60">	}</span>
+
+	public List&lt;Customer&gt; retrieveAllCustomers() {
+<span class="nc" id="L63">		return customers;</span>
+	}
+	
+	public List&lt;PhoneNumber&gt; retrieveAllPhoneNumbers() {
+<span class="nc" id="L67">		return phoneNumbers;</span>
+	}
+
+	public Customer retrieveCustomer(int customerId) {
+<span class="nc bnc" id="L71" title="All 2 branches missed.">		for (Customer cust : customers) {</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">			if (cust.getCustomerId() == customerId) {</span>
+<span class="nc" id="L73">				return cust;</span>
+			}
+<span class="nc" id="L75">		}</span>
+<span class="nc" id="L76">		return null;</span>
+	}
+
+	public List&lt;PhoneNumber&gt; retrievePhoneNumbers(int customerId) {
+<span class="nc" id="L80">		Customer cust = retrieveCustomer(customerId);</span>
+
+<span class="nc bnc" id="L82" title="All 2 branches missed.">		if (cust == null) {</span>
+<span class="nc" id="L83">			return null;</span>
+		}
+
+<span class="nc" id="L86">		return cust.getPhoneNumbers();</span>
+	}
+
+	public PhoneNumber retrievePhoneNumberDetails(int customerId, String  phoneNumber) {
+<span class="nc" id="L90">		Customer cust = retrieveCustomer(customerId);</span>
+
+<span class="nc bnc" id="L92" title="All 2 branches missed.">		if (cust == null) {</span>
+<span class="nc" id="L93">			return null;</span>
+		}
+<span class="nc" id="L95">		logger.info(&quot;Customer  exists with customer ID &quot;+  customerId + &quot; with phone numbers &quot; +cust.getPhoneNumbers().size());</span>
+
+<span class="nc bnc" id="L97" title="All 2 branches missed.">		for (PhoneNumber phone : cust.getPhoneNumbers()) {</span>
+<span class="nc bnc" id="L98" title="All 2 branches missed.">			if (phone.getPhoneNumber().equals(phoneNumber)) {</span>
+<span class="nc" id="L99">				return phone;</span>
+			}
+<span class="nc" id="L101">		}</span>
+
+<span class="nc" id="L103">		return null;</span>
+	}
+	
+	public PhoneNumber activatePhoneNumber(int customerId, String  phoneNumberId, PhoneNumber phoneNumber) {
+<span class="nc" id="L107">		Customer cust = retrieveCustomer(customerId);</span>
+
+<span class="nc bnc" id="L109" title="All 2 branches missed.">		if (cust == null) {</span>
+<span class="nc" id="L110">			return null;</span>
+		}
+<span class="nc" id="L112">		logger.info(&quot;Customer  exists with customer ID &quot;+  customerId + &quot; with phone numbers &quot; +cust.getPhoneNumbers().size());</span>
+
+<span class="nc" id="L114">		PhoneNumber _phone = null;</span>
+		
+<span class="nc bnc" id="L116" title="All 2 branches missed.">		for (PhoneNumber phone : cust.getPhoneNumbers()) {</span>
+<span class="nc" id="L117">			logger.info(&quot;Before Phones &quot;+ phone);</span>
+<span class="nc" id="L118">		}</span>
+		
+		
+<span class="nc" id="L121">		cust.getPhoneNumbers().stream()</span>
+<span class="nc" id="L122">				   .filter(phonenumber -&gt; phoneNumber.getPhoneNumber().equals(phonenumber.getPhoneNumber()))</span>
+<span class="nc" id="L123">				   .forEach(u -&gt; u.setActivationstatus(phoneNumber.isActivationstatus()));</span>
+		
+		
+		
+<span class="nc bnc" id="L127" title="All 2 branches missed.">		for (PhoneNumber phone : cust.getPhoneNumbers()) {</span>
+<span class="nc" id="L128">			logger.info(&quot;After Phones &quot;+ phone);</span>
+<span class="nc" id="L129">		}</span>
+		
+		//update phone number
+<span class="nc" id="L132">		_phone.setActivationstatus(phoneNumber.isActivationstatus());</span>
+		
+<span class="nc" id="L134">		return null;</span>
+	}
+
+<span class="fc" id="L137">	private SecureRandom random = new SecureRandom();</span>
+
+	public PhoneNumber addPhone(int custId, PhoneNumber phoneNumber) {
+<span class="nc" id="L140">		Customer customer = retrieveCustomer(custId);</span>
+
+<span class="nc bnc" id="L142" title="All 2 branches missed.">		if (customer == null) {</span>
+<span class="nc" id="L143">			return null;</span>
+		}
+
+<span class="nc" id="L146">		String randomId = new BigInteger(130, random).toString(32);</span>
+<span class="nc" id="L147">		phoneNumber.setCustomerId(custId);</span>
+
+<span class="nc" id="L149">		customer.getPhoneNumbers().add(phoneNumber);</span>
+
+<span class="nc" id="L151">		return phoneNumber;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

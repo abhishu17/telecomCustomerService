@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StudentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">student-services</a> &gt; <a href="index.source.html" class="el_package">com.in28minutes.springboot.service</a> &gt; <span class="el_source">StudentService.java</span></div><h1>StudentService.java</h1><pre class="source lang-java linenums">package com.in28minutes.springboot.service;
+
+import java.math.BigInteger;
+import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.stereotype.Component;
+
+import com.in28minutes.springboot.model.Course;
+import com.in28minutes.springboot.model.Student;
+
+@Component
+<span class="fc" id="L15">public class StudentService {</span>
+
+<span class="fc" id="L17">	private static List&lt;Student&gt; students = new ArrayList&lt;&gt;();</span>
+
+	static {
+		//Initialize Data
+<span class="fc" id="L21">		Course course1 = new Course(&quot;Course1&quot;, &quot;Spring&quot;, &quot;10 Steps&quot;, Arrays</span>
+<span class="fc" id="L22">				.asList(&quot;Learn Maven&quot;, &quot;Import Project&quot;, &quot;First Example&quot;,</span>
+<span class="fc" id="L23">						&quot;Second Example&quot;));</span>
+<span class="fc" id="L24">		Course course2 = new Course(&quot;Course2&quot;, &quot;Spring MVC&quot;, &quot;10 Examples&quot;,</span>
+<span class="fc" id="L25">				Arrays.asList(&quot;Learn Maven&quot;, &quot;Import Project&quot;, &quot;First Example&quot;,</span>
+<span class="fc" id="L26">						&quot;Second Example&quot;));</span>
+<span class="fc" id="L27">		Course course3 = new Course(&quot;Course3&quot;, &quot;Spring Boot&quot;, &quot;6K Students&quot;,</span>
+<span class="fc" id="L28">				Arrays.asList(&quot;Learn Maven&quot;, &quot;Learn Spring&quot;,</span>
+<span class="fc" id="L29">						&quot;Learn Spring MVC&quot;, &quot;First Example&quot;, &quot;Second Example&quot;));</span>
+<span class="fc" id="L30">		Course course4 = new Course(&quot;Course4&quot;, &quot;Maven&quot;,</span>
+<span class="fc" id="L31">				&quot;Most popular maven course on internet!&quot;, Arrays.asList(</span>
+<span class="fc" id="L32">						&quot;Pom.xml&quot;, &quot;Build Life Cycle&quot;, &quot;Parent POM&quot;,</span>
+<span class="fc" id="L33">						&quot;Importing into Eclipse&quot;));</span>
+
+<span class="fc" id="L35">		Student ranga = new Student(&quot;Student1&quot;, &quot;Ranga Karanam&quot;,</span>
+<span class="fc" id="L36">				&quot;Hiker, Programmer and Architect&quot;, new ArrayList&lt;&gt;(Arrays</span>
+<span class="fc" id="L37">						.asList(course1, course2, course3, course4)));</span>
+
+<span class="fc" id="L39">		Student satish = new Student(&quot;Student2&quot;, &quot;Satish T&quot;,</span>
+<span class="fc" id="L40">				&quot;Hiker, Programmer and Architect&quot;, new ArrayList&lt;&gt;(Arrays</span>
+<span class="fc" id="L41">						.asList(course1, course2, course3, course4)));</span>
+
+<span class="fc" id="L43">		students.add(ranga);</span>
+<span class="fc" id="L44">		students.add(satish);</span>
+<span class="fc" id="L45">	}</span>
+
+	public List&lt;Student&gt; retrieveAllStudents() {
+<span class="nc" id="L48">		return students;</span>
+	}
+
+	public Student retrieveStudent(String studentId) {
+<span class="nc bnc" id="L52" title="All 2 branches missed.">		for (Student student : students) {</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">			if (student.getId().equals(studentId)) {</span>
+<span class="nc" id="L54">				return student;</span>
+			}
+		}
+<span class="nc" id="L57">		return null;</span>
+	}
+
+	public List&lt;Course&gt; retrieveCourses(String studentId) {
+<span class="nc" id="L61">		Student student = retrieveStudent(studentId);</span>
+		
+		/*if(studentId.equalsIgnoreCase(&quot;Student1&quot;)){
+			throw new RuntimeException(&quot;Something went wrong&quot;);
+		}*/
+
+<span class="nc bnc" id="L67" title="All 2 branches missed.">		if (student == null) {</span>
+<span class="nc" id="L68">			return null;</span>
+		}
+
+<span class="nc" id="L71">		return student.getCourses();</span>
+	}
+
+	public Course retrieveCourse(String studentId, String courseId) {
+<span class="nc" id="L75">		Student student = retrieveStudent(studentId);</span>
+
+<span class="nc bnc" id="L77" title="All 2 branches missed.">		if (student == null) {</span>
+<span class="nc" id="L78">			return null;</span>
+		}
+
+<span class="nc bnc" id="L81" title="All 2 branches missed.">		for (Course course : student.getCourses()) {</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">			if (course.getId().equals(courseId)) {</span>
+<span class="nc" id="L83">				return course;</span>
+			}
+		}
+
+<span class="nc" id="L87">		return null;</span>
+	}
+
+<span class="fc" id="L90">	private SecureRandom random = new SecureRandom();</span>
+
+	public Course addCourse(String studentId, Course course) {
+<span class="nc" id="L93">		Student student = retrieveStudent(studentId);</span>
+
+<span class="nc bnc" id="L95" title="All 2 branches missed.">		if (student == null) {</span>
+<span class="nc" id="L96">			return null;</span>
+		}
+
+<span class="nc" id="L99">		String randomId = new BigInteger(130, random).toString(32);</span>
+<span class="nc" id="L100">		course.setId(randomId);</span>
+
+<span class="nc" id="L102">		student.getCourses().add(course);</span>
+
+<span class="nc" id="L104">		return course;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.2.201808211720</span></div></body></html>

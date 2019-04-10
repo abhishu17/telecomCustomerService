@@ -1,0 +1,100 @@
+-------------------------------------------------------------------------------
+Test set: com.telecom.RepositoryIntegrationTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 0, Errors: 8, Skipped: 0, Time elapsed: 18.65 s <<< FAILURE! - in com.telecom.RepositoryIntegrationTest
+to_check_if_phonenumber_landline_phone_returned(com.telecom.RepositoryIntegrationTest)  Time elapsed: 0.565 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_phonenumber_landline_phone_returned(RepositoryIntegrationTest.java:76)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_phonenumber_landline_phone_returned(RepositoryIntegrationTest.java:76)
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]
+	at com.telecom.RepositoryIntegrationTest.to_check_if_phonenumber_landline_phone_returned(RepositoryIntegrationTest.java:76)
+
+to_check_if_customer_exists_by_id(com.telecom.RepositoryIntegrationTest)  Time elapsed: 0.12 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_exists_by_id(RepositoryIntegrationTest.java:36)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_exists_by_id(RepositoryIntegrationTest.java:36)
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_exists_by_id(RepositoryIntegrationTest.java:36)
+
+to_check_if_customer_exists_by_customer_phonenumber_is_linked(com.telecom.RepositoryIntegrationTest)  Time elapsed: 0.036 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_exists_by_customer_phonenumber_is_linked(RepositoryIntegrationTest.java:115)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_exists_by_customer_phonenumber_is_linked(RepositoryIntegrationTest.java:115)
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_exists_by_customer_phonenumber_is_linked(RepositoryIntegrationTest.java:115)
+
+to_check_if_customer_not_found(com.telecom.RepositoryIntegrationTest)  Time elapsed: 0.038 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_not_found(RepositoryIntegrationTest.java:89)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_not_found(RepositoryIntegrationTest.java:89)
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_not_found(RepositoryIntegrationTest.java:89)
+
+to_check_if_phone_number_is_active(com.telecom.RepositoryIntegrationTest)  Time elapsed: 0.471 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_phone_number_is_active(RepositoryIntegrationTest.java:102)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_phone_number_is_active(RepositoryIntegrationTest.java:102)
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]
+	at com.telecom.RepositoryIntegrationTest.to_check_if_phone_number_is_active(RepositoryIntegrationTest.java:102)
+
+to_check_if_customer_phonenumber_data_returned(com.telecom.RepositoryIntegrationTest)  Time elapsed: 0.109 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_phonenumber_data_returned(RepositoryIntegrationTest.java:63)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_phonenumber_data_returned(RepositoryIntegrationTest.java:63)
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_phonenumber_data_returned(RepositoryIntegrationTest.java:63)
+
+to_check_if_customer_not_exists_by_id(com.telecom.RepositoryIntegrationTest)  Time elapsed: 0.125 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_not_exists_by_id(RepositoryIntegrationTest.java:49)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_not_exists_by_id(RepositoryIntegrationTest.java:49)
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_not_exists_by_id(RepositoryIntegrationTest.java:49)
+
+to_check_if_customer_exists_by_customer_phonenumber_is_not_linked(com.telecom.RepositoryIntegrationTest)  Time elapsed: 0.166 s  <<< ERROR!
+org.springframework.dao.DataIntegrityViolationException: 
+could not execute statement; SQL [n/a]; constraint ["PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_exists_by_customer_phonenumber_is_not_linked(RepositoryIntegrationTest.java:128)
+Caused by: org.hibernate.exception.ConstraintViolationException: could not execute statement
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_exists_by_customer_phonenumber_is_not_linked(RepositoryIntegrationTest.java:128)
+Caused by: org.h2.jdbc.JdbcSQLException: 
+Unique index or primary key violation: "PRIMARY KEY ON PUBLIC.CUSTOMER(CUSTOMERID)"; SQL statement:
+insert into customer (lastname, addressid, customersince, dateofbirth, firstname, gender, customerid) values (?, ?, ?, ?, ?, ?, ?) [23505-196]
+	at com.telecom.RepositoryIntegrationTest.to_check_if_customer_exists_by_customer_phonenumber_is_not_linked(RepositoryIntegrationTest.java:128)
+
